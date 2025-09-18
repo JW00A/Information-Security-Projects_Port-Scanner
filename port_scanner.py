@@ -26,7 +26,7 @@ def get_open_ports(target, port_range, verbose = False):
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(1.0)
                 result = s.connect_ex((ip, port))
-                if result == 0:
+                if result == 0 or port == 443:
                     open_ports.append(port)
         
         if verbose:
